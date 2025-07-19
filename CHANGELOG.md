@@ -5,6 +5,13 @@ All notable changes to the "Stone.js Service container" extension will be docume
 ## Unreleased
 
 
+## [0.1.2](https://github.com/stone-foundation/stone-js-service-container/compare/v0.1.1...v0.1.2) (2025-07-19)
+
+
+### Bug Fixes
+
+* extracts interfaces (IContainer, IBinding) to improve code abstraction and reduce circular dependencies ([#21](https://github.com/stone-foundation/stone-js-service-container/issues/21)) ([ab31931](https://github.com/stone-foundation/stone-js-service-container/commit/ab31931e2e54437b6c46e748ce76724552d05a36))
+
 ## [0.1.1](https://github.com/stone-foundation/stone-js-service-container/compare/v0.1.0...v0.1.1) (2025-06-12)
 
 
