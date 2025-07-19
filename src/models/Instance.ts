@@ -1,6 +1,5 @@
 import { Binding } from './Binding'
-import { Container } from '../Container'
-import { BindingValue } from '../declarations'
+import { BindingValue, IContainer } from '../declarations'
 
 /**
  * Class representing an Instance.
@@ -18,7 +17,7 @@ export class Instance<V extends BindingValue> extends Binding<V> {
    * @param _container - Container to resolve dependencies (not used in this implementation).
    * @returns The resolved value of the binding.
    */
-  resolve (_container: Container): V | undefined {
+  resolve (_container: IContainer): V | undefined {
     return this.value
   }
 }

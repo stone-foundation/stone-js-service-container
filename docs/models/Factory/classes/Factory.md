@@ -121,7 +121,7 @@ This is intended for cases where a fresh instance is required for each resolutio
 
 ##### container
 
-[`Container`](../../../Container/classes/Container.md)
+[`IContainer`](../../../declarations/interfaces/IContainer.md)
 
 The container to resolve dependencies from.
 

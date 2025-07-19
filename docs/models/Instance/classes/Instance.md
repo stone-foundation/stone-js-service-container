@@ -97,7 +97,7 @@ Resolve and return the value of the binding.
 
 ##### \_container
 
-[`Container`](../../../Container/classes/Container.md)
+[`IContainer`](../../../declarations/interfaces/IContainer.md)
 
 Container to resolve dependencies (not used in this implementation).
 

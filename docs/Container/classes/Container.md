@@ -14,6 +14,10 @@ Mr. Stone <evensstone@gmail.com>
 
 - [`Proxiable`](../../Proxiable/classes/Proxiable.md)
 
+## Implements
+
+- [`IContainer`](../../declarations/interfaces/IContainer.md)
+
 ## Constructors
 
 ### Constructor
@@ -65,6 +69,10 @@ One or more strings representing the aliases.
 `this`
 
 The container instance.
+
+#### Implementation of
+
+[`IContainer`](../../declarations/interfaces/IContainer.md).[`alias`](../../declarations/interfaces/IContainer.md#alias)
 
 ***
 
@@ -118,6 +126,10 @@ Key binding aliases.
 
 The container instance.
 
+#### Implementation of
+
+[`IContainer`](../../declarations/interfaces/IContainer.md).[`autoBinding`](../../declarations/interfaces/IContainer.md#autobinding)
+
 ***
 
 ### binding()
@@ -153,6 +165,10 @@ The resolver function to provide the value.
 `this`
 
 The container instance.
+
+#### Implementation of
+
+[`IContainer`](../../declarations/interfaces/IContainer.md).[`binding`](../../declarations/interfaces/IContainer.md#binding)
 
 ***
 
@@ -190,6 +206,10 @@ The resolver function to provide the value.
 
 The container instance.
 
+#### Implementation of
+
+[`IContainer`](../../declarations/interfaces/IContainer.md).[`bindingIf`](../../declarations/interfaces/IContainer.md#bindingif)
+
 ***
 
 ### bound()
@@ -214,6 +234,10 @@ The key to check.
 
 True if the key is bound, false otherwise.
 
+#### Implementation of
+
+[`IContainer`](../../declarations/interfaces/IContainer.md).[`bound`](../../declarations/interfaces/IContainer.md#bound)
+
 ***
 
 ### clear()
@@ -229,6 +253,10 @@ Reset the container so that all bindings are removed.
 `this`
 
 The container instance.
+
+#### Implementation of
+
+[`IContainer`](../../declarations/interfaces/IContainer.md).[`clear`](../../declarations/interfaces/IContainer.md#clear)
 
 ***
 
@@ -266,6 +294,10 @@ A factory function that returns the resolved value.
 
 `V`
 
+#### Implementation of
+
+[`IContainer`](../../declarations/interfaces/IContainer.md).[`factory`](../../declarations/interfaces/IContainer.md#factory)
+
 ***
 
 ### getAliases()
@@ -281,6 +313,10 @@ Retrieve the value of the aliases property.
 `Map`\<`string`, [`BindingKey`](../../declarations/type-aliases/BindingKey.md)\>
 
 A map of all aliases registered in the container.
+
+#### Implementation of
+
+[`IContainer`](../../declarations/interfaces/IContainer.md).[`getAliases`](../../declarations/interfaces/IContainer.md#getaliases)
 
 ***
 
@@ -309,6 +345,10 @@ The alias name.
 
 The binding key associated with the alias, or undefined if not found.
 
+#### Implementation of
+
+[`IContainer`](../../declarations/interfaces/IContainer.md).[`getAliasKey`](../../declarations/interfaces/IContainer.md#getaliaskey)
+
 ***
 
 ### getBindings()
@@ -324,6 +364,10 @@ Retrieve the value of the bindings property.
 `Map`\<[`BindingKey`](../../declarations/type-aliases/BindingKey.md), [`Binding`](../../models/Binding/classes/Binding.md)\<[`BindingValue`](../../declarations/type-aliases/BindingValue.md)\>\>
 
 A map of all bindings registered in the container.
+
+#### Implementation of
+
+[`IContainer`](../../declarations/interfaces/IContainer.md).[`getBindings`](../../declarations/interfaces/IContainer.md#getbindings)
 
 ***
 
@@ -348,6 +392,10 @@ The key to check.
 `boolean`
 
 True if the key is bound, false otherwise.
+
+#### Implementation of
+
+[`IContainer`](../../declarations/interfaces/IContainer.md).[`has`](../../declarations/interfaces/IContainer.md#has)
 
 ***
 
@@ -379,6 +427,10 @@ The value to be bound.
 
 The container instance.
 
+#### Implementation of
+
+[`IContainer`](../../declarations/interfaces/IContainer.md).[`instance`](../../declarations/interfaces/IContainer.md#instance)
+
 ***
 
 ### instanceIf()
@@ -409,6 +461,10 @@ The value to be bound.
 
 The container instance.
 
+#### Implementation of
+
+[`IContainer`](../../declarations/interfaces/IContainer.md).[`instanceIf`](../../declarations/interfaces/IContainer.md#instanceif)
+
 ***
 
 ### isAlias()
@@ -432,6 +488,10 @@ The alias to check.
 `boolean`
 
 True if the alias exists, false otherwise.
+
+#### Implementation of
+
+[`IContainer`](../../declarations/interfaces/IContainer.md).[`isAlias`](../../declarations/interfaces/IContainer.md#isalias)
 
 ***
 
@@ -466,6 +526,10 @@ The resolved value.
 #### Throws
 
 ContainerError if the key cannot be resolved.
+
+#### Implementation of
+
+[`IContainer`](../../declarations/interfaces/IContainer.md).[`make`](../../declarations/interfaces/IContainer.md#make)
 
 ***
 
@@ -502,6 +566,10 @@ Whether to bind as a singleton if not already bound.
 `V`
 
 The resolved value.
+
+#### Implementation of
+
+[`IContainer`](../../declarations/interfaces/IContainer.md).[`resolve`](../../declarations/interfaces/IContainer.md#resolve)
 
 ***
 
@@ -541,6 +609,10 @@ The resolver function to provide the value.
 
 The container instance.
 
+#### Implementation of
+
+[`IContainer`](../../declarations/interfaces/IContainer.md).[`singleton`](../../declarations/interfaces/IContainer.md#singleton)
+
 ***
 
 ### singletonIf()
@@ -576,6 +648,10 @@ The resolver function to provide the value.
 `this`
 
 The container instance.
+
+#### Implementation of
+
+[`IContainer`](../../declarations/interfaces/IContainer.md).[`singletonIf`](../../declarations/interfaces/IContainer.md#singletonif)
 
 ***
 

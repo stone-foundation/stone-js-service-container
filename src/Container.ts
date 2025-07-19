@@ -4,7 +4,7 @@ import { Factory } from './models/Factory'
 import { Instance } from './models/Instance'
 import { Singleton } from './models/Singleton'
 import { ContainerError } from './errors/ContainerError'
-import { BindingKey, BindingValue, Resolver } from './declarations'
+import { BindingKey, BindingValue, Resolver, IContainer } from './declarations'
 
 /**
  * Class representing a Container.
@@ -15,7 +15,7 @@ import { BindingKey, BindingValue, Resolver } from './declarations'
  *
  * @author Mr. Stone <evensstone@gmail.com>
  */
-export class Container extends Proxiable {
+export class Container extends Proxiable implements IContainer {
   private readonly aliases: Map<string, BindingKey>
   private readonly resolvingKeys: Set<BindingKey> = new Set()
   private readonly bindings: Map<BindingKey, Binding<BindingValue>>
@@ -297,8 +297,8 @@ export class Container extends Proxiable {
       if (typeof value === 'function') {
         const callable = value
         const resolver = Object.prototype.hasOwnProperty.call(callable, 'prototype')
-          ? (container: Container) => new callable.prototype.constructor(container)
-          : (container: Container) => callable(container)
+          ? (container: IContainer) => new callable.prototype.constructor(container)
+          : (container: IContainer) => callable(container)
         singleton ? this.singleton(key, resolver) : this.binding(key, resolver)
       } else {
         this.instance(key, value as V)

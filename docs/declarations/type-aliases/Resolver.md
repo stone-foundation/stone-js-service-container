@@ -18,7 +18,7 @@ The type of value that the resolver returns.
 
 ### container
 
-[`Container`](../../Container/classes/Container.md)
+[`IContainer`](../interfaces/IContainer.md)
 
 The container used to resolve dependencies.
 
@@ -31,7 +31,7 @@ The resolved value of type V.
 ## Example
 
 ```typescript
-const myResolver: Resolver<number> = (container: Container) => {
+const myResolver: Resolver<number> = (container: IContainer) => {
   // Use the container to resolve dependencies and return a number.
   return 42;
 };

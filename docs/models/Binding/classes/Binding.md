@@ -23,6 +23,10 @@ Mr. Stone <evensstone@gmail.com>
 
 The type of value that this binding holds.
 
+## Implements
+
+- [`IBinding`](../../../declarations/interfaces/IBinding.md)\<`V`\>
+
 ## Constructors
 
 ### Constructor
@@ -89,7 +93,7 @@ This abstract method must be implemented by subclasses to provide specific resol
 
 ##### container
 
-[`Container`](../../../Container/classes/Container.md)
+[`IContainer`](../../../declarations/interfaces/IContainer.md)
 
 The container to resolve dependencies from.
 
@@ -98,3 +102,7 @@ The container to resolve dependencies from.
 `undefined` \| `V`
 
 The resolved value of the binding.
+
+#### Implementation of
+
+[`IBinding`](../../../declarations/interfaces/IBinding.md).[`resolve`](../../../declarations/interfaces/IBinding.md#resolve)

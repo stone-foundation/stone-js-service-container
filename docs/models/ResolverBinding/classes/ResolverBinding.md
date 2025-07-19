@@ -120,7 +120,7 @@ This abstract method must be implemented by subclasses to provide specific resol
 
 ##### container
 
-[`Container`](../../../Container/classes/Container.md)
+[`IContainer`](../../../declarations/interfaces/IContainer.md)
 
 The container to resolve dependencies from.
 
