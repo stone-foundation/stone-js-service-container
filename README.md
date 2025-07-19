@@ -47,9 +47,8 @@ PNPM:
 pnpm add @stone-js/service-container
 ```
 
-> [!NOTE]
-> This package is Pure ESM. If you are unfamiliar with what that means or how to handle it in your project, 
-> please refer to [`this guide on Pure ESM packages`](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).
+> [!IMPORTANT]
+> This package is **pure ESM**. Ensure your `package.json` includes `"type": "module"` or configure your bundler appropriately.
 
 Make sure your project setup is compatible with ESM. This might involve updating your `package.json` or using certain bundler configurations.
 
@@ -339,7 +338,7 @@ The Stone Service Container simplifies dependency management in your application
 
 This package is part of the Stone.js ecosystem, a modern JavaScript framework built around the Continuum Architecture.
 
-Explore the full documentation: https://stonejs.dev
+Explore the full documentation: [https://stonejs.dev](https://stonejs.dev)
 
 ## API documentation
 

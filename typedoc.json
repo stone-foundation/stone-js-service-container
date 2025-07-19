@@ -10,7 +10,7 @@
   "excludePrivate": true, // Exclude private members from the docs
   "excludeProtected": false, // Optionally include or exclude protected members
   "excludeExternals": true, // Exclude external modules
-  "disableSources": true, // Show source links in the documentation
+  "disableSources": true, // Hide source links in the documentation
   "readme": "none", // Don't generate README.md
   "hidePageHeader": true, // Hide the page header
   "hideGroupHeadings": true, // Hide the project name link in the header

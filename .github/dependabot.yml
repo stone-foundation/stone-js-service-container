@@ -13,8 +13,7 @@ updates:
       prefix: "chore(deps)"
       include: "scope"
     labels: ["dependencies"]
-    reviewers: ["pierrevensy"]
-    assignees: ["pierrevensy"]
+    assignees: ["evens-stone"]
     groups:
       minor-updates:
         patterns:
@@ -36,8 +35,7 @@ updates:
       prefix: "chore(actions)"
       include: "scope"
     labels: ["github-actions"]
-    reviewers: ["pierrevensy"]
-    assignees: ["pierrevensy"]
+    assignees: ["evens-stone"]
     groups:
       minor-updates:
         patterns:
