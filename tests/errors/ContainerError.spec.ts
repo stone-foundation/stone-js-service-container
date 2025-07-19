@@ -46,7 +46,9 @@ describe('ContainerError', () => {
   })
 
   it('should create a ContainerError for resolution failure with function key', () => {
-    const message: BindingKey = function testFunction () {}
+    const message: BindingKey = function testFunction () {
+      // Empty function for testing
+    }
     const error = new ContainerError(ContainerError.RESOLUTION_TYPE, message)
 
     expect(error.message).toBe('Failed to resolve a binding with a key of [Function: testFunction] from the service container.')

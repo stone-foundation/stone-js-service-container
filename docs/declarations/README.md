@@ -1,5 +1,10 @@
 # declarations
 
+## Interfaces
+
+- [IBinding](interfaces/IBinding.md)
+- [IContainer](interfaces/IContainer.md)
+
 ## Type Aliases
 
 - [BindingKey](type-aliases/BindingKey.md)

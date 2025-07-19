@@ -1,7 +1,6 @@
-import { Container } from '../Container'
-import { BindingValue } from '../declarations'
 import { ResolverBinding } from './ResolverBinding'
 import { ContainerError } from '../errors/ContainerError'
+import { BindingValue, IContainer } from '../declarations'
 
 /**
  * Class representing a Singleton.
@@ -23,7 +22,7 @@ export class Singleton<V extends BindingValue> extends ResolverBinding<V> {
    * @returns The resolved value of the binding.
    * @throws ContainerError if the value cannot be resolved.
    */
-  resolve (container: Container): V | undefined {
+  resolve (container: IContainer): V | undefined {
     if (!this.isResolved()) {
       try {
         this.value = this.resolver(container)

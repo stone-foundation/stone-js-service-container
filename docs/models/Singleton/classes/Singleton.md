@@ -121,7 +121,7 @@ to resolve the value, store it, and return it.
 
 ##### container
 
-[`Container`](../../../Container/classes/Container.md)
+[`IContainer`](../../../declarations/interfaces/IContainer.md)
 
 The container to resolve dependencies from.
 

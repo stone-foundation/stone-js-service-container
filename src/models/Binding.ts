@@ -1,5 +1,4 @@
-import { Container } from '../Container'
-import { BindingValue } from '../declarations'
+import { BindingValue, IContainer, IBinding } from '../declarations'
 
 /**
  * Abstract class representing a Binding.
@@ -11,7 +10,7 @@ import { BindingValue } from '../declarations'
  * @template V - The type of value that this binding holds.
  * @author Mr. Stone <evensstone@gmail.com>
  */
-export abstract class Binding<V extends BindingValue> {
+export abstract class Binding<V extends BindingValue> implements IBinding<V> {
   /**
    * The value held by the binding.
    *
@@ -45,5 +44,5 @@ export abstract class Binding<V extends BindingValue> {
    * @param container - The container to resolve dependencies from.
    * @returns The resolved value of the binding.
    */
-  abstract resolve (container: Container): V | undefined
+  abstract resolve (container: IContainer): V | undefined
 }

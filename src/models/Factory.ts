@@ -1,7 +1,6 @@
-import { Container } from '../Container'
-import { BindingValue } from '../declarations'
 import { ResolverBinding } from './ResolverBinding'
 import { ContainerError } from '../errors/ContainerError'
+import { BindingValue, IContainer } from '../declarations'
 
 /**
  * Class representing a Factory.
@@ -23,7 +22,7 @@ export class Factory<V extends BindingValue> extends ResolverBinding<V> {
    * @returns The resolved value of the binding.
    * @throws ContainerError if the value cannot be resolved.
    */
-  resolve (container: Container): V {
+  resolve (container: IContainer): V {
     try {
       return this.resolver(container)
     } catch (error: any) {
