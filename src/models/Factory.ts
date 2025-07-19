@@ -1,6 +1,6 @@
 import { ResolverBinding } from './ResolverBinding'
-import { BindingValue, IContainer } from '../declarations'
 import { ContainerError } from '../errors/ContainerError'
+import { BindingValue, IContainer } from '../declarations'
 
 /**
  * Class representing a Factory.
