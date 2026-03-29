@@ -3,7 +3,7 @@
 [![npm](https://img.shields.io/npm/l/@stone-js/service-container)](https://opensource.org/licenses/MIT)
 [![npm](https://img.shields.io/npm/v/@stone-js/service-container)](https://www.npmjs.com/package/@stone-js/service-container)
 [![npm](https://img.shields.io/npm/dm/@stone-js/service-container)](https://www.npmjs.com/package/@stone-js/service-container)
-![Maintenance](https://img.shields.io/maintenance/yes/2025)
+![Maintenance](https://img.shields.io/maintenance/yes/2026)
 [![Build Status](https://github.com/stone-foundation/stone-js-service-container/actions/workflows/main.yml/badge.svg)](https://github.com/stone-foundation/stone-js-service-container/actions/workflows/main.yml)
 [![Publish Package to npmjs](https://github.com/stone-foundation/stone-js-service-container/actions/workflows/release.yml/badge.svg)](https://github.com/stone-foundation/stone-js-service-container/actions/workflows/release.yml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=stone-foundation_stone-js-service-container&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=stone-foundation_stone-js-service-container)
