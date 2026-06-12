@@ -301,7 +301,7 @@ export class Container extends Proxiable implements IContainer {
           : (container: IContainer) => callable(container)
         singleton ? this.singleton(key, resolver) : this.binding(key, resolver)
       } else {
-        this.instance(key, value as V)
+        this.instance(key, value)
       }
       this.alias(key, alias)
     }
