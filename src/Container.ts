@@ -296,12 +296,12 @@ export class Container extends Proxiable implements IContainer {
     if (!this.bound(key)) {
       if (typeof value === 'function') {
         const callable = value
-        const resolver = Object.hasOwn(callable, 'prototype')
+        const resolver = Object.prototype.hasOwnProperty.call(callable, 'prototype')
           ? (container: IContainer) => new callable.prototype.constructor(container)
           : (container: IContainer) => callable(container)
         singleton ? this.singleton(key, resolver) : this.binding(key, resolver)
       } else {
-        this.instance(key, value as V)
+        this.instance(key, value)
       }
       this.alias(key, alias)
     }
