@@ -5,6 +5,13 @@ All notable changes to the "Stone.js Service container" extension will be docume
 ## Unreleased
 
 
+## [0.1.3](https://github.com/stone-foundation/stone-js-service-container/compare/v0.1.2...v0.1.3) (2026-06-12)
+
+
+### Bug Fixes
+
+* replace Object.hasOwn syntax to ensure compatibility with older … ([#34](https://github.com/stone-foundation/stone-js-service-container/issues/34)) ([92b426a](https://github.com/stone-foundation/stone-js-service-container/commit/92b426a33a7eaa5f165d3259f4fe6ce28d239c9b))
+
 ## [0.1.2](https://github.com/stone-foundation/stone-js-service-container/compare/v0.1.1...v0.1.2) (2025-07-19)
 
 
