@@ -14,7 +14,7 @@
     "declaration": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "emitDeclarationOnly": false,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
