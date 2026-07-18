@@ -34,14 +34,31 @@ export class Container extends Proxiable implements IContainer {
    *
    * @returns A new ProxyHandler instance.
    */
+  /**
+   * Well-known property names that must never trigger service resolution. Accessing them
+   * (via `await container`, `JSON.stringify`, `console.log`, React element checks, spread,
+   * etc.) returns `undefined` so the container is safe to inspect and pass around, while
+   * genuine unknown-service access still fails fast through `make()`.
+   */
+  private static readonly SYSTEM_PROPS = new Set<PropertyKey>([
+    'then', 'catch', 'finally',
+    'toJSON', 'toString', 'valueOf', 'inspect',
+    'constructor', 'prototype', '$$typeof', 'nodeType'
+  ])
+
   private static Proxyhandler (): ProxyHandler<Container> {
     return {
       get: (target: Container, prop: PropertyKey, receiver: unknown) => {
         if (Reflect.has(target, prop)) {
           return Reflect.get(target, prop, receiver)
-        } else {
-          return target.make(prop)
         }
+        // Symbols (Symbol.toPrimitive, Symbol.iterator, inspect.custom…) and well-known
+        // system props are inspection/coercion hooks, never services: return undefined.
+        if (typeof prop === 'symbol' || Container.SYSTEM_PROPS.has(prop)) {
+          return undefined
+        }
+        // Otherwise resolve as a bound service (make throws ContainerError if unbound).
+        return target.make(prop)
       }
     }
   }
@@ -207,7 +224,10 @@ export class Container extends Proxiable implements IContainer {
     key = this.getAliasKey(key) ?? key
 
     if (this.resolvingKeys.has(key)) {
-      throw new ContainerError(ContainerError.CIRCULAR_DEPENDENCY_TYPE, key)
+      // Surface the full resolution chain (A → B → C → A) so the cycle is diagnosable
+      // at a glance, not just the offending key.
+      const chain = [...this.resolvingKeys, key].map(containerKeyName).join(' → ')
+      throw new ContainerError(ContainerError.CIRCULAR_DEPENDENCY_TYPE, chain)
     }
 
     this.resolvingKeys.add(key)
@@ -296,15 +316,52 @@ export class Container extends Proxiable implements IContainer {
     if (!this.bound(key)) {
       if (typeof value === 'function') {
         const callable = value
-        const resolver = Object.prototype.hasOwnProperty.call(callable, 'prototype')
-          ? (container: IContainer) => new callable.prototype.constructor(container)
-          : (container: IContainer) => callable(container)
+        // Only real ES classes are instantiated with `new`; ordinary/arrow factory
+        // functions are called. `hasOwnProperty('prototype')` was too loose (every
+        // non-arrow function has a prototype), breaking `function` factories.
+        const resolver: (container: IContainer) => V = isClassConstructor(callable)
+          ? (container: IContainer) => new (callable as new (c: IContainer) => V)(container)
+          : (container: IContainer) => (callable as (c: IContainer) => V)(container)
         singleton ? this.singleton(key, resolver) : this.binding(key, resolver)
       } else {
         this.instance(key, value)
       }
-      this.alias(key, alias)
     }
+    // Apply aliases even when the key is already bound (aliasing was previously dropped).
+    this.alias(key, alias)
     return this
   }
+}
+
+/**
+ * Detect a class constructor (as opposed to an ordinary or factory function).
+ *
+ * Uses two complementary signals so it survives down-level (ES5) bundling:
+ * 1. Native/modern classes stringify with the `class` keyword.
+ * 2. Transpiled classes lose the keyword but keep their methods on the prototype, whereas a
+ *    plain/factory function's prototype has only `constructor`.
+ *
+ * For ambiguous cases, callers should pass an explicit `isClass`/`isFactory` flag.
+ *
+ * @param value - The value to test.
+ * @returns True if the value is (very likely) a class constructor.
+ */
+function isClassConstructor (value: unknown): boolean {
+  if (typeof value !== 'function') { return false }
+  if (/^class[\s{]/.test(Function.prototype.toString.call(value))) { return true }
+  const proto = (value as { prototype?: object }).prototype
+  return proto !== null && proto !== undefined && Object.getOwnPropertyNames(proto).length > 1
+}
+
+/**
+ * Produce a readable name for a binding key (used in circular-dependency chains).
+ *
+ * @param key - The binding key.
+ * @returns A human-readable label.
+ */
+function containerKeyName (key: unknown): string {
+  if (typeof key === 'function') { return key.name.length > 0 ? key.name : 'anonymous' }
+  if (typeof key === 'symbol') { return key.toString() }
+  if (typeof key === 'object' && key !== null) { return key.constructor?.name ?? 'Object' }
+  return String(key)
 }

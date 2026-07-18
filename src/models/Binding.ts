@@ -19,12 +19,22 @@ export abstract class Binding<V extends BindingValue> implements IBinding<V> {
   protected value?: V
 
   /**
+   * Whether the value has been resolved at least once.
+   *
+   * Tracked explicitly (not inferred from `value !== undefined`) so a binding whose resolved
+   * value is legitimately `undefined` is still considered resolved — preserving the singleton
+   * guarantee and avoiding repeated resolver side effects.
+   */
+  protected resolved: boolean
+
+  /**
    * Create a new instance of Binding.
    *
    * @param value - The value to be held by the binding.
    */
   constructor (value?: V) {
     this.value = value
+    this.resolved = value !== undefined
   }
 
   /**
@@ -33,7 +43,7 @@ export abstract class Binding<V extends BindingValue> implements IBinding<V> {
    * @returns A boolean indicating whether the value has been resolved.
    */
   protected isResolved (): boolean {
-    return this.value !== undefined
+    return this.resolved
   }
 
   /**

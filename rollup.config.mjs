@@ -27,7 +27,7 @@ export default [
     ]
   },
   {
-    input: 'dist/**/*.d.ts',
+    input: ['dist/**/*.d.ts', '!dist/index.d.ts'],
     output: [{ format: 'es' , file: 'dist/index.d.ts' }],
     plugins: [
       multi(),

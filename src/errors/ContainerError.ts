@@ -72,7 +72,7 @@ export class ContainerError extends Error {
       [ContainerError.ALIAS_TYPE]: `${String(message)} is aliased to itself`,
       [ContainerError.CANNOT_RESOLVE_TYPE]: `Failed to resolve binding: ${String(message)}`,
       [ContainerError.ALIAS_UNBOUND_TYPE]: `Cannot alias an unbound value : ${String(message)}`,
-      [ContainerError.CIRCULAR_DEPENDENCY_TYPE]: `Circular dependency detected for key: ${String(message)}`,
+      [ContainerError.CIRCULAR_DEPENDENCY_TYPE]: `Circular dependency detected: ${String(message)}`,
       [ContainerError.RESOLVER_TYPE]: `Invalid resolver: Expected a function but received ${typeof message}`,
       [ContainerError.NOT_A_SERVICE_TYPE]: `This (${String(message)}) is not a service. Must contain $$metadata$$ static property or must use @Service decorator.`
     }

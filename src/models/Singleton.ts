@@ -26,6 +26,7 @@ export class Singleton<V extends BindingValue> extends ResolverBinding<V> {
     if (!this.isResolved()) {
       try {
         this.value = this.resolver(container)
+        this.resolved = true
       } catch (error: any) {
         throw new ContainerError(ContainerError.CANNOT_RESOLVE_TYPE, error.message)
       }
