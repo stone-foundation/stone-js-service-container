@@ -346,11 +346,15 @@ export class Container extends Proxiable implements IContainer {
  * @param value - The value to test.
  * @returns True if the value is (very likely) a class constructor.
  */
-function isClassConstructor (value: unknown): boolean {
-  if (typeof value !== 'function') { return false }
-  if (/^class[\s{]/.test(Function.prototype.toString.call(value))) { return true }
+function isClassConstructor (value: Function): boolean {
+  // Callers already narrow to `typeof value === 'function'`, so no redundant guard here.
+  // A function's source starts with `class` only for real ES classes.
+  if (Function.prototype.toString.call(value).startsWith('class')) { return true }
+  // Otherwise fall back to the ES5-safe heuristic: a transpiled class carries own methods on
+  // its prototype (a bare/arrow factory does not).
   const proto = (value as { prototype?: object }).prototype
-  return proto !== null && proto !== undefined && Object.getOwnPropertyNames(proto).length > 1
+  if (proto === undefined || proto === null) { return false }
+  return Object.getOwnPropertyNames(proto).length > 1
 }
 
 /**
