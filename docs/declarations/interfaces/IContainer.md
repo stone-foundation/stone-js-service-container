@@ -11,7 +11,7 @@ Mr. Stone <evensstone@gmail.com>
 
 ## Properties
 
-### alias()
+### alias
 
 ```ts
 alias: (key, aliases) => this;
@@ -27,7 +27,7 @@ Set a binding as alias.
 
 ##### aliases
 
-`string` | `string`[]
+`string` \| `string`[]
 
 #### Returns
 
@@ -35,7 +35,7 @@ Set a binding as alias.
 
 ***
 
-### autoBinding()
+### autoBinding
 
 ```ts
 autoBinding: <V>(name, item?, singleton?, alias?) => this;
@@ -65,7 +65,7 @@ AutoBind value to the service container.
 
 ##### alias?
 
-`string` | `string`[]
+`string` \| `string`[]
 
 #### Returns
 
@@ -73,7 +73,7 @@ AutoBind value to the service container.
 
 ***
 
-### binding()
+### binding
 
 ```ts
 binding: <V>(key, resolver) => this;
@@ -103,7 +103,7 @@ Bind a resolver function into the container under the provided key, returning a 
 
 ***
 
-### bindingIf()
+### bindingIf
 
 ```ts
 bindingIf: <V>(key, resolver) => this;
@@ -133,7 +133,7 @@ Bind a resolver function into the container under the provided key, returning a 
 
 ***
 
-### bound()
+### bound
 
 ```ts
 bound: (key) => boolean;
@@ -153,7 +153,7 @@ Check if a value is already bound in the container by its key.
 
 ***
 
-### clear()
+### clear
 
 ```ts
 clear: () => this;
@@ -167,7 +167,7 @@ Reset the container so that all bindings are removed.
 
 ***
 
-### factory()
+### factory
 
 ```ts
 factory: <V>(key) => () => V;
@@ -189,17 +189,11 @@ Resolve a value from the container by its key and return it in a factory functio
 
 #### Returns
 
-```ts
-(): V;
-```
-
-##### Returns
-
-`V`
+() => `V`
 
 ***
 
-### getAliases()
+### getAliases
 
 ```ts
 getAliases: () => Map<string, BindingKey>;
@@ -213,10 +207,10 @@ Retrieve the value of the aliases property.
 
 ***
 
-### getAliasKey()
+### getAliasKey
 
 ```ts
-getAliasKey: (alias) => undefined | BindingKey;
+getAliasKey: (alias) => BindingKey | undefined;
 ```
 
 Get a binding key by its alias.
@@ -229,11 +223,11 @@ Get a binding key by its alias.
 
 #### Returns
 
-`undefined` \| [`BindingKey`](../type-aliases/BindingKey.md)
+[`BindingKey`](../type-aliases/BindingKey.md) \| `undefined`
 
 ***
 
-### getBindings()
+### getBindings
 
 ```ts
 getBindings: () => Map<BindingKey, IBinding<BindingValue>>;
@@ -247,7 +241,7 @@ Retrieve the value of the bindings property.
 
 ***
 
-### has()
+### has
 
 ```ts
 has: (key) => boolean;
@@ -267,7 +261,7 @@ Check if a value is already bound in the container by its key.
 
 ***
 
-### instance()
+### instance
 
 ```ts
 instance: (key, value) => this;
@@ -291,7 +285,7 @@ Bind a single instance or value into the container under the provided key.
 
 ***
 
-### instanceIf()
+### instanceIf
 
 ```ts
 instanceIf: (key, value) => this;
@@ -315,7 +309,7 @@ Bind a single instance or value into the container under the provided key if not
 
 ***
 
-### isAlias()
+### isAlias
 
 ```ts
 isAlias: (alias) => boolean;
@@ -335,7 +329,7 @@ Check if an alias exists in the container.
 
 ***
 
-### make()
+### make
 
 ```ts
 make: <V>(key) => V;
@@ -361,7 +355,7 @@ Resolve a registered value from the container by its key.
 
 ***
 
-### resolve()
+### resolve
 
 ```ts
 resolve: <V>(key, singleton?) => V;
@@ -391,7 +385,7 @@ Resolve a value from the container by its key, binding it if necessary.
 
 ***
 
-### singleton()
+### singleton
 
 ```ts
 singleton: <V>(key, resolver) => this;
@@ -421,7 +415,7 @@ Bind a resolver function into the container under the provided key as a singleto
 
 ***
 
-### singletonIf()
+### singletonIf
 
 ```ts
 singletonIf: <V>(key, resolver) => this;

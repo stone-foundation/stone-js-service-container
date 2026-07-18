@@ -1,4 +1,4 @@
-# Class: `abstract` Proxiable
+# Abstract Class: Proxiable
 
 Class representing a Proxiable.
 

@@ -49,10 +49,28 @@ The value to be held by the binding.
 
 ## Properties
 
+### resolved
+
+```ts
+protected resolved: boolean;
+```
+
+Whether the value has been resolved at least once.
+
+Tracked explicitly (not inferred from `value !== undefined`) so a binding whose resolved
+value is legitimately `undefined` is still considered resolved — preserving the singleton
+guarantee and avoiding repeated resolver side effects.
+
+#### Inherited from
+
+[`Binding`](../../Binding/classes/Binding.md).[`resolved`](../../Binding/classes/Binding.md#resolved)
+
+***
+
 ### value?
 
 ```ts
-protected optional value: V;
+protected optional value?: V;
 ```
 
 The value held by the binding.
@@ -88,7 +106,7 @@ A boolean indicating whether the value has been resolved.
 ### resolve()
 
 ```ts
-resolve(_container): undefined | V;
+resolve(_container): V | undefined;
 ```
 
 Resolve and return the value of the binding.
@@ -103,7 +121,7 @@ Container to resolve dependencies (not used in this implementation).
 
 #### Returns
 
-`undefined` \| `V`
+`V` \| `undefined`
 
 The resolved value of the binding.
 

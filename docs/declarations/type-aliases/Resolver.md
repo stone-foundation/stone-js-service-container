@@ -1,4 +1,4 @@
-# Type Alias: Resolver()\<V\>
+# Type Alias: Resolver\<V\>
 
 ```ts
 type Resolver<V> = (container) => V;

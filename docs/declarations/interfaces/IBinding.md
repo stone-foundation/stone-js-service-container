@@ -19,10 +19,10 @@ The type of value that this binding holds.
 
 ## Properties
 
-### resolve()
+### resolve
 
 ```ts
-resolve: (container) => undefined | V;
+resolve: (container) => V | undefined;
 ```
 
 Resolve and return the value of the binding.
@@ -37,6 +37,6 @@ The container to resolve dependencies from.
 
 #### Returns
 
-`undefined` \| `V`
+`V` \| `undefined`
 
 The resolved value of the binding.

@@ -1,4 +1,4 @@
-# Class: `abstract` Binding\<V\>
+# Abstract Class: Binding\<V\>
 
 Abstract class representing a Binding.
 
@@ -51,10 +51,24 @@ The value to be held by the binding.
 
 ## Properties
 
+### resolved
+
+```ts
+protected resolved: boolean;
+```
+
+Whether the value has been resolved at least once.
+
+Tracked explicitly (not inferred from `value !== undefined`) so a binding whose resolved
+value is legitimately `undefined` is still considered resolved — preserving the singleton
+guarantee and avoiding repeated resolver side effects.
+
+***
+
 ### value?
 
 ```ts
-protected optional value: V;
+protected optional value?: V;
 ```
 
 The value held by the binding.
@@ -82,7 +96,7 @@ A boolean indicating whether the value has been resolved.
 ### resolve()
 
 ```ts
-abstract resolve(container): undefined | V;
+abstract resolve(container): V | undefined;
 ```
 
 Resolve and return the value of the binding.
@@ -99,7 +113,7 @@ The container to resolve dependencies from.
 
 #### Returns
 
-`undefined` \| `V`
+`V` \| `undefined`
 
 The resolved value of the binding.
 

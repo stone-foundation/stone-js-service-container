@@ -60,9 +60,9 @@ The binding value.
 
 ##### aliases
 
-One or more strings representing the aliases.
+`string` \| `string`[]
 
-`string` | `string`[]
+One or more strings representing the aliases.
 
 #### Returns
 
@@ -116,9 +116,9 @@ Bind as singleton when true.
 
 ##### alias?
 
-Key binding aliases.
+`string` \| `string`[]
 
-`string` | `string`[]
+Key binding aliases.
 
 #### Returns
 
@@ -286,13 +286,7 @@ The key to resolve.
 
 A factory function that returns the resolved value.
 
-```ts
-(): V;
-```
-
-##### Returns
-
-`V`
+() => `V`
 
 #### Implementation of
 
@@ -324,8 +318,8 @@ A map of all aliases registered in the container.
 
 ```ts
 getAliasKey(alias): 
-  | undefined
-  | BindingKey;
+  | BindingKey
+  | undefined;
 ```
 
 Get a binding key by its alias.
@@ -340,8 +334,8 @@ The alias name.
 
 #### Returns
 
-  \| `undefined`
   \| [`BindingKey`](../../declarations/type-aliases/BindingKey.md)
+  \| `undefined`
 
 The binding key associated with the alias, or undefined if not found.
 
@@ -536,7 +530,7 @@ ContainerError if the key cannot be resolved.
 ### resolve()
 
 ```ts
-resolve<V>(key, singleton): V;
+resolve<V>(key, singleton?): V;
 ```
 
 Resolve a value from the container by its key, binding it if necessary.
@@ -555,7 +549,7 @@ Resolve a value from the container by its key, binding it if necessary.
 
 The key to resolve.
 
-##### singleton
+##### singleton?
 
 `boolean` = `false`
 
